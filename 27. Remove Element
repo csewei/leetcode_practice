@@ -13,3 +13,13 @@ int removeElement(int* nums, int numsSize, int val) {
     return ans;
 }
 雙指標法
+int removeElement(int* nums, int numsSize, int val) {
+    int slowIndex = 0;
+    for (int fastIndex = 0; fastIndex < numsSize; fastIndex++) {
+        if (nums[fastIndex] != val) {
+            nums[slowIndex] = nums[fastIndex];
+            slowIndex++;
+        }
+    }
+    return slowIndex;
+}
