@@ -26,44 +26,50 @@ bool backspaceCompare(char* s, char* t) {
 
 
 bool backspaceCompare(char* s, char* t) {
-    int sSkipNum = 0, tSkipNum = 0, sc = 0, tc = 0;
-    int slength = strlen(s), tlength = strlen(t);
+    int sSkipNum = 0, tSkipNum = 0;
+    int slength = strlen(s) - 1, tlength = strlen(t) - 1;
     while (1) {
         while (slength >= 0) {       // 由後往前
             if (s[slength] == '#') { // 遇到# 記錄下來 要跳過
                 sSkipNum++;
-                sc++;
-            } else {
+            } 
+            else {
                 if (sSkipNum > 0) { // 跳過#
                     sSkipNum--;
-                } else {
+                }
+                else {
                     break;
                 }
-                slength--;
             }
+            slength--;
         }
         while (tlength >= 0) {
             if (t[tlength] == '#') {
                 tSkipNum++;
-                tc++;
-            } else {
+            }
+            else {
                 if (tSkipNum > 0) {
                     tSkipNum--;
-                } else {
+                }
+                else {
                     break;
                 }
-                tlength--;
             }
+            tlength--;
         }
-        if (strlen(s) - sc != strlen(t) - tc) { // 清除#後長度不同
+        if (slength < 0 || tlength < 0) {   //已全部完成
+            break;
+        }
+        if (s[slength] != t[tlength]){
             return false;
-        } else {
-            for (int i = 0; i < strlen(s) - sc; i++) {
-                if (s[i] != t[i]) {
-                    return false;
-                }
-            }
-            return true;
         }
+        slength--;  //因為跳出s去除#的while後沒有slength--，所以這邊要有
+        tlength--;  //
     }
+    if (slength == -1 && tlength == -1){
+        return true;
+    }
+    else{
+        return false; //s和t都去除#後，長度不一樣
+    } 
 }
