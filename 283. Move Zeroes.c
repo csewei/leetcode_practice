@@ -1,4 +1,4 @@
-方法一(先數有幾個0)
+//方法一(先數有幾個0)
 void moveZeroes(int* nums, int numsSize) {
     int zcount = 0, j = 0;
     for (int i = 0; i < numsSize; i++) {
@@ -14,7 +14,7 @@ void moveZeroes(int* nums, int numsSize) {
     }
 }
 
-方法二(雪球法)
+//方法二(雪球法)
 void moveZeroes(int* nums, int numsSize) {
     int snowball_size = 0, temp = 0;
     for (int i = 0; i < numsSize; i++) {
