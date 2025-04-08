@@ -1,4 +1,4 @@
-暴力法
+//暴力法
 int removeElement(int* nums, int numsSize, int val) {
     int ans = numsSize;
     for (int i = 0; i < ans; i++) {
@@ -12,7 +12,7 @@ int removeElement(int* nums, int numsSize, int val) {
     }
     return ans;
 }
-雙指標法
+//雙指標法
 int removeElement(int* nums, int numsSize, int val) {
     int slowIndex = 0;
     for (int fastIndex = 0; fastIndex < numsSize; fastIndex++) {
