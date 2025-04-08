@@ -30,11 +30,13 @@ int myLinkedListGet(MyLinkedList* obj, int index) {
 }
 
 void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
-	Node* node = (Node*)malloc(sizeof(Node));
-	node->val = val;
+	Node* newnode = (Node*)malloc(sizeof(Node));
+	newnode->val = val;
 
-	node->next = obj->data->next;
-	obj->data->next = node;
+    Node* cur = obj->data;
+
+	newnode->next = cur->next;
+	cur->next = newnode;
 	obj->size++;
 }
 void myLinkedListAddAtTail(MyLinkedList* obj, int val) {
