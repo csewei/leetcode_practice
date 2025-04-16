@@ -1,10 +1,10 @@
 void reverseString(char* s, int sSize) {
-    int i, j;
+    int left, right;
     int len = sSize;
     char temp;
-    for (i = 0, j = len - 1; i < len / 2; i++, j--) {
-        temp = s[i];
-        s[i] = s[j];
-        s[j] = temp;
+    for (left = 0, right = len - 1; left < len / 2; left++, right--) {
+        temp = s[left];
+        s[left] = s[right];
+        s[right] = temp;
     }
 }
