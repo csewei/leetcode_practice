@@ -1,3 +1,5 @@
+//雙指針
+
 void reverseString(char* s, int sSize) {
     int left, right;
     int len = sSize;
