@@ -16,10 +16,10 @@ void remove_space(char* s) { // 移除不該有的空格
     for (fast_index = 0; fast_index < len; fast_index++) {
         if (s[fast_index] != ' ') {
             if (slow_index != 0) { // 因為開頭不能有空格
-                s[slow_index] = ' ';
+                s[slow_index] = ' ';    //除了開頭的單詞以外，其他單詞前面要有空格
                 slow_index++;
             }
-            while (fast_index < len && s[fast_index] != ' ') {
+            while (fast_index < len && s[fast_index] != ' ') {    //補上該單詞
                 s[slow_index] = s[fast_index];
                 slow_index++;
                 fast_index++;
