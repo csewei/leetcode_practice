@@ -11,7 +11,7 @@ typedef struct {
     Node* data;     //用來指向dummyhaed
 } MyLinkedList;
 
-MyLinkedList* myLinkedListCreate() {
+MyLinkedList* myLinkedListCreate() {		//建立一個 dummy head node（vhead），其 next 為 NULL。//將 dummy node 指派給 data。
     MyLinkedList* obj = (MyLinkedList*)malloc(sizeof(MyLinkedList));
     Node* vhead = (Node*)malloc(sizeof(Node));
     vhead->next = (void*)0;
