@@ -13,7 +13,34 @@ struct TreeNode* invertTree(struct TreeNode* root){
 }
 
 
-//方法2:利用queue做BFS
+//方法2:
+struct TreeNode* invertTree(struct TreeNode* root){
+    if(!root)
+        return NULL;
+    //存储结点的栈
+    struct TreeNode** stack = (struct TreeNode**)malloc(sizeof(struct TreeNode*) * 100);
+    int stackTop = 0;
+    //将根节点入栈
+    stack[stackTop++] = root;
+    //若栈中还有元素（进行循环）
+    while(stackTop) {
+        //取出栈顶元素
+        struct TreeNode* temp = stack[--stackTop];
+        //交换结点的左右孩子
+        struct TreeNode* tempNode = temp->right;
+        temp->right = temp->left;
+        temp->left = tempNode;
+        //若当前结点有左右孩子，将其入栈
+        if(temp->right)
+            stack[stackTop++] = temp->right;
+        if(temp->left)
+            stack[stackTop++] = temp->left;
+    }
+    return root;
+}
+
+
+//方法3:利用queue做BFS
 typedef struct QNode {
     struct TreeNode* treeNode;
     struct QNode* next;
