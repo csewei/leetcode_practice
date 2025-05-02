@@ -1,5 +1,19 @@
-//方法1:利用queue做BFS
+//方法1:
+struct TreeNode* invertTree(struct TreeNode* root){
+    if(!root)
+        return NULL;
 
+    struct TreeNode* temp = root->right;    //交換左右child
+    root->right = root->left;
+    root->left = temp;
+
+    invertTree(root->left); //左
+    invertTree(root->right);    //右
+    return root;
+}
+
+
+//方法2:利用queue做BFS
 typedef struct QNode {
     struct TreeNode* treeNode;
     struct QNode* next;
@@ -83,4 +97,7 @@ struct TreeNode* invertTree(struct TreeNode* root) {
 }
 
 
-//方法2:
+    invertTree(root->left); //左
+    invertTree(root->right);    //右
+    return root;
+}
