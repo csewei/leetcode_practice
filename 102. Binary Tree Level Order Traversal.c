@@ -21,12 +21,14 @@ typedef struct QNode {
 typedef struct Queue {
     QNode* front;
     QNode* rear;
+    int size;
 } Queue;
 
 /*** Queue 操作 ***/
 Queue* createQueue() {
     Queue* q = (Queue*)malloc(sizeof(Queue));
     q->front = q->rear = NULL;
+    q->size = 0;
     return q;
 }
 
@@ -45,6 +47,7 @@ void enqueue(Queue* q,struct TreeNode* node) {
         q->rear->next = newNode;
         q->rear = newNode;
     }
+    q->size++;
 }
 
 struct TreeNode* dequeue(Queue* q) {
@@ -55,6 +58,7 @@ struct TreeNode* dequeue(Queue* q) {
     q->front = q->front->next;
     if (q->front == NULL) q->rear = NULL;
     free(temp);
+    q_size--;
     return node;
 }
 
@@ -81,13 +85,7 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
     enqueue(q, root);
 
     while (!isEmpty(q)) {
-        int levelSize = 0;
-        QNode* curr = q->front;
-        while (curr) {
-            levelSize++;
-            curr = curr->next;
-        }
-
+        int levelSize = q->size;
         int* level = (int*)malloc(sizeof(int) * levelSize);
 
         for (int i = 0; i < levelSize; i++) {
