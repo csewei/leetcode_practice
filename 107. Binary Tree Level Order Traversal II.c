@@ -1,3 +1,5 @@
+//linked_list queue
+
 typedef struct QNode {
     struct TreeNode* treeNode;
     struct QNode* next;
