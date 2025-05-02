@@ -1,16 +1,4 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     struct TreeNode *left;
- *     struct TreeNode *right;
- * };
- */
-/**
- * Return an array of arrays of size *returnSize.
- * The sizes of the arrays are returned as *returnColumnSizes array.
- * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
- */
+//linked_list queue
 
 /*** Queue 節點與 Queue 定義 ***/
 typedef struct QNode {
@@ -69,7 +57,6 @@ void freeQueue(Queue* q) {
     free(q);
 }
 
-/*** LeetCode 102：層序遍歷主函式 ***/
 int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes) {
     if (root==NULL) {
         *returnSize = 0;
