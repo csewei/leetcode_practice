@@ -75,7 +75,7 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
         int levelSize = q->size;
         int* level = (int*)malloc(sizeof(int) * levelSize);
 
-        for (int i = 0; i < levelSize; i++) {
+        for (int i = 0; i < levelSize; i++) {        //levelsize為每層節點數
             struct TreeNode* node = dequeue(q);
             level[i] = node->val;
             if (node->left) enqueue(q, node->left);
@@ -84,7 +84,7 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
 
         result[*returnSize] = level;
         (*returnColumnSizes)[*returnSize] = levelSize;
-        (*returnSize)++;
+        (*returnSize)++;    //returnsize為總共有幾層
     }
 
     freeQueue(q);
