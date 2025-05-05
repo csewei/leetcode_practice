@@ -1,5 +1,25 @@
-//linked_list queue
+方法1:遞迴(較簡單但速度較慢)
+int minDepth(struct TreeNode* root) {
+    if (root == NULL) {
+        return 0;
+    }
+    int left_tree = minDepth(root->left);
+    int right_tree = minDepth(root->right);
 
+    if (root->left == NULL && root->right != NULL) {
+        return 1 + right_tree;
+    } 
+    else if (root->right == NULL && root->left != NULL) {
+        return 1 + left_tree;
+    } 
+    int min = 1 + (left_tree < right_tree ? left_tree : right_tree);
+    
+    return min;
+}
+
+
+
+方法2:BFS
 typedef struct QNode {
     struct TreeNode* treeNode;
     struct QNode* next;
