@@ -1,5 +1,17 @@
+方法1:遞迴
+int maxDepth(struct TreeNode* root) {
+    if(!root)
+        return 0;
+    
+    int left = maxDepth(root->left);
+    int right = maxDepth(root->right);
+    int max = left > right ? left : right;
+    
+    return max + 1;     //return 較大值 1為當前層數
+}
 
 
+方法2:queue
 typedef struct QNode {
     struct TreeNode* treeNode;
     struct QNode* next;
