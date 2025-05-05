@@ -1,4 +1,4 @@
-方法1:遞迴(較簡單但速度較慢)
+//方法1:遞迴(較簡單但速度較慢)
 int minDepth(struct TreeNode* root) {
     if (root == NULL) {
         return 0;
@@ -19,7 +19,7 @@ int minDepth(struct TreeNode* root) {
 
 
 
-方法2:BFS
+//方法2:BFS
 typedef struct QNode {
     struct TreeNode* treeNode;
     struct QNode* next;
