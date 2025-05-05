@@ -1,4 +1,4 @@
-方法1:遞迴
+//方法1:遞迴
 int maxDepth(struct TreeNode* root) {
     if(!root)
         return 0;
@@ -11,7 +11,41 @@ int maxDepth(struct TreeNode* root) {
 }
 
 
-方法2:queue
+//方法1.5:
+// 全域變數：紀錄最大深度
+int result = 0;
+
+// 前序遍歷 + 回溯
+void getDepth(struct TreeNode* node, int depth) {
+    if (node == NULL) return;
+
+    // 中：更新最大深度
+    if (depth > result) {
+        result = depth;
+    }
+
+    // 左
+    if (node->left != NULL) {
+        getDepth(node->left, depth + 1);
+    }
+
+    // 右
+    if (node->right != NULL) {
+        getDepth(node->right, depth + 1);
+    }
+}
+// 主函數
+int maxDepth(struct TreeNode* root) {
+    result = 0; // 初始化
+    if (root == NULL) return 0;
+
+    getDepth(root, 1); // 從深度1開始
+    return result;
+}
+
+
+
+//方法2:queue
 typedef struct QNode {
     struct TreeNode* treeNode;
     struct QNode* next;
