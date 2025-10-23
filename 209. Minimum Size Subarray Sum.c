@@ -1,28 +1,23 @@
 //使用滑動視窗
 
 int minSubArrayLen(int target, int* nums, int numsSize) {
-    int subarray_sum = 0, subarray_len = 0;
-    int i = 0, ans = INT_MAX;            // i代表起始指針
-    for (int j = 0; j < numsSize; j++) { // j代表終止指針
-        subarray_sum += nums[j];
-        while (subarray_sum >= target) {
-            subarray_len = j - i + 1;
-            if(ans < subarray_len){
-    
-            }
-            else{
-                ans = subarray_len;
-            }
-            subarray_sum -= nums[i];
-            i++;
+    int left = 0;
+    int sum = 0; // 當前窗口的和
+    int ans = numsSize + 1; // 初始化為一個不可能的長度，表示無解
+
+    for (int right = 0; right < numsSize; right++) {
+        sum += nums[right]; // 擴展窗口，加入右邊元素
+
+        // 當窗口和 >= target 時，縮小窗口
+        while (sum >= target) {
+            ans = ans < (right - left + 1) ? ans : (right - left + 1); // 更新最小長度
+            sum -= nums[left]; // 縮小窗口，移除左邊元素
+            left++;
         }
     }
-    if(ans == INT_MAX){
-        return 0;
-    }
-    else{
-        return ans;
-    }
+
+    // 如果 ans 仍為 numsSize + 1，說明無解，返回 0
+    return ans == numsSize + 1 ? 0 : ans;
 }
 
 
