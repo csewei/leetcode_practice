@@ -26,7 +26,7 @@ int myLinkedListGet(MyLinkedList* obj, int index) {
     }
     Node* cur = obj->data;  //cur指向dummyhead
 
-    while (index-- >= 0) { //因為是取出第n個節點，所以有=
+    while (index--) { //因為是取出第n個節點，所以有=
         cur = cur->next;
     }
     return cur->val;
