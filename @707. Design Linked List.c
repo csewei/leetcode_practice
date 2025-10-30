@@ -24,12 +24,10 @@ int myLinkedListGet(MyLinkedList* obj, int index) {
     if (index < 0 || index > obj->size - 1) {
         return -1;
     }
-    Node* cur = obj->data;  //cur指向dummyhead
-
-    while (index--) { //因為是取出第n個節點，所以有=
+    Node* cur = obj->data->next;  // 從第一個真節點開始
+    while (index--) {
         cur = cur->next;
     }
-    return cur->val;
 }
 
 void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
